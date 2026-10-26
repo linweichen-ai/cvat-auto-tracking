@@ -1,0 +1,5 @@
+# 每个 tracker 模型一个子目录，例如：
+#   serverless/tracker/siammask/function.yaml
+#   serverless/tracker/siammask/main.py
+#   serverless/tracker/nanotrack/function.yaml
+#   ...

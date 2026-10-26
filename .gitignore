@@ -1,0 +1,71 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+*.egg
+dist/
+build/
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# ---- 虚拟环境 / 密钥 ----
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+id_rsa
+id_rsa.*
+*.token
+.netrc
+deploy.local.ps1
+deploy.local.sh
+secrets/
+
+# ---- IDE / 编辑器 ----
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ---- 临时 / 日志 ----
+*.log
+*.tmp
+*.bak
+*.old
+logs/
+tmp/
+scratch/
+
+# ---- Nuclio / Docker 本地构建产物 ----
+.nuclio/
+.dockerignore.local
+*.tar
+*.tar.gz
+!serverless/**/*.tar.gz.placeholder
+
+# ---- 大文件 / 模型权重（不入库）----
+*.onnx
+*.pt
+*.pth
+*.ckpt
+*.engine
+*.trt
+weights/
+models/bin/
