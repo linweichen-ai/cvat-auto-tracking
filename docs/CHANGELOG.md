@@ -36,3 +36,15 @@
 - `4644688` probe (write-permission probe file `.perm-probe`)
 - `255def1` chore: remove write-permission probe
 - 备注：这两个提交由 PAT 权限验证过程产生，探针文件已删除。
+## 2026-10-26 12:23:08 +08:00
+
+- commit message: `真实任务演示：job423 首帧7种子→自动传播59个shape，含演示报告与截图 (2026-10-26 12:23:08 +08:00)`
+- changed files:
+
+```
+[new]    status/integration.md
+[new]    results/demo/
+[new]    tests/demo_propagate.py
+[new]    tests/render_demo.py
+```
+

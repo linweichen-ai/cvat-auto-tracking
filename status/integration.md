@@ -31,5 +31,11 @@
   - E2E 期间曾误删 job 419 全部标注，已用备份 PUT 恢复并核对一致（24 shapes，分帧分布吻合）。
 - get_shapes 的 label_id 必填（None → 422）。
 
+## 真实任务演示（Task3 / job 423，150 帧）
+- 7 个 pallet 种子（frame 0）→ 缓存 0-30（6.3s）→ 逐实例 propagate（~49s）→ 7→66 shapes，
+  覆盖 frame 0-25；目标出画后自动停止。报告：`results/demo/demo-report.md`；
+  渲染图：`results/demo/demo-grid.png`；面板实连截图：`results/demo/panel-demo.png`。
+- 标注已保留在 job 423；回滚方法见报告（剥 id 后整份 PUT）。
+
 ## 更新时间
-2026-10-26 12:05 (UTC+8)
+2026-10-26 12:25 (UTC+8)
