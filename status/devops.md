@@ -3,7 +3,7 @@
 ## 当前状态
 - 阶段：**仓库已打通，main 分支与远程同步，实时推送机制就绪**。
 - 远程仓库：https://github.com/linweichen-ai/cvat-auto-tracking （PUBLIC，default branch `main`）
-- 本地与远程 HEAD：`08e53f8`（已 `git ls-remote` 校验一致）
+- 本地与远程 HEAD：`f9236d4`（已 `git ls-remote` 校验一致）
 - 认证方式：classic PAT 通过环境变量 `GH_TOKEN` 注入 gh CLI 与 git credential helper（token 不落盘、不入仓库）。
   - 注：gh keyring 中仍保留旧 fine-grained token，但 push 实际走 `GH_TOKEN` 环境变量。
 - 本仓库 credential helper：`!gh auth git-credential`（已绕过 GCM 旧缓存）。
@@ -22,6 +22,11 @@
     - results/ 下 e2e 日志、job419 标注备份、panel-render.png
   - 清理远程探针文件 `.perm-probe`（API DELETE，提交 `255def1`）。
   - 修复 sync-to-github.ps1：porcelain 解析偏移、CHANGELOG 表头重复日期、中文路径转义。
+  - 第三次提交 `f9236d4`：13 文件，+414 行——真实任务 job423 演示产物：
+    - results/demo/：demo-grid.png、demo-frame-000/010/020/030.png、panel-demo.png、demo-report.md、job423-backup.json、propagate-summary.json
+    - tests/demo_propagate.py、tests/render_demo.py
+    - status/integration.md 更新
+    - 演示结果：首帧 7 个种子 shape → 自动传播 59 个 shape。
 
 ## 下一步
 1. 每次新产物落地后执行：`.\sync-to-github.ps1 -Message "说明"`。
@@ -35,4 +40,4 @@
 - （历史）旧 fine-grained PAT 缺 Contents:write，已由用户换发 classic token 解决。
 
 ## 更新时间
-- 2026-10-26（仓库打通，实时推送就绪）
+- 2026-10-26（job423 演示产物已入库，HEAD=f9236d4）
