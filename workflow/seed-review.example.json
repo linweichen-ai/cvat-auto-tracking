@@ -1,0 +1,11 @@
+{
+  "status": "approved",
+  "author": "candidate-author",
+  "reviewer": "independent-reviewer",
+  "task_id": 101,
+  "job_id": 7,
+  "frame": 0,
+  "label_id": 12,
+  "mask_sha256": "REPLACE_WITH_EXACT_REVIEWED_MASK_PNG_SHA256",
+  "source_image_sha256": "REPLACE_WITH_ORIGINAL_IMAGE_SHA256"
+}

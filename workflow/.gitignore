@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+config.local.json
+work/
+frames/

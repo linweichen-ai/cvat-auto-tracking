@@ -1,0 +1,11 @@
+{
+  "status": "approved",
+  "author": "candidate-author",
+  "reviewer": "independent-reviewer",
+  "entries": [
+    {
+      "candidate_file": "candidates/frame_000000_pallet_1/candidates.json",
+      "candidate_sha256": "REPLACE_WITH_EXACT_REVIEWED_FILE_SHA256"
+    }
+  ]
+}

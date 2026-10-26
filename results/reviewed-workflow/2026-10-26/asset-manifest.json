@@ -1,0 +1,82 @@
+[
+  {
+    "path": "results/reviewed-workflow/2026-10-26/checkpoint.json",
+    "bytes": 908,
+    "sha256": "b8276e5b61404a3fa8c52e308ec3fc3676e401d8ac8f0014c5c951079a71325f"
+  },
+  {
+    "path": "results/reviewed-workflow/2026-10-26/frame-075-progress.jpg",
+    "bytes": 299385,
+    "sha256": "aff5ea6eb46c3452121f36d81f59925a989069fcabde2958f44307414e1c05f1"
+  },
+  {
+    "path": "results/reviewed-workflow/2026-10-26/frame-100-progress.jpg",
+    "bytes": 233387,
+    "sha256": "016e13187fd1f53603f23c4a6231502128105a70d9f228cd79bb45e049dbefdc"
+  },
+  {
+    "path": "results/reviewed-workflow/2026-10-26/frame-104-progress.jpg",
+    "bytes": 247424,
+    "sha256": "4e4277db9fc3dd020858a4110b08a45af0baadaebe5c1652f5e0dfd04dc00efd"
+  },
+  {
+    "path": "results/reviewed-workflow/2026-10-26/frame-106-progress.jpg",
+    "bytes": 246605,
+    "sha256": "007b144209491ebf0c13cd97e414eb915b3f6f1a2d25f3cfe607aeb369a21930"
+  },
+  {
+    "path": "results/reviewed-workflow/2026-10-26/frame-108-progress.jpg",
+    "bytes": 247694,
+    "sha256": "4a0de47675b9b7bbae8552b8aa7869ca7b30d3d3288f8aecb351605e3a3b893b"
+  },
+  {
+    "path": "results/reviewed-workflow/2026-10-26/frame-124-progress.jpg",
+    "bytes": 235793,
+    "sha256": "024e093867e8b14476b6e80660ca500556ef90ec40b37b98232e52d65ffab582"
+  },
+  {
+    "path": "results/reviewed-workflow/2026-10-26/image-bindings.json",
+    "bytes": 1130,
+    "sha256": "5eee4d8403e743c221ddc479e148f46c919ccecef57433b7fe36b3178d05dee0"
+  },
+  {
+    "path": "results/reviewed-workflow/2026-10-26/operation-ledger.json",
+    "bytes": 23127,
+    "sha256": "51baf86da90d854d89130410ecda80601aa74339518f7c1de4278cee6432caeb"
+  },
+  {
+    "path": "results/reviewed-workflow/2026-10-26/rejected-coarse-boxes.jpg",
+    "bytes": 178095,
+    "sha256": "dfa1c9f43bb8a80687aa8725c173e4e4172df1e6110d0afeca247101539f65e6"
+  },
+  {
+    "path": "results/reviewed-workflow/2026-10-26/reviewed-operations.json",
+    "bytes": 316070,
+    "sha256": "583caa465bd8487ef4aadf9e4667871b9e96e84191569baed9542e987a21fe0d"
+  },
+  {
+    "path": "results/reviewed-workflow/2026-10-26/saved-annotations-snapshot.json",
+    "bytes": 974162,
+    "sha256": "e59e2ab81eaaf98959836d7876608d6dfaa1fd2b1f7c119a720e18aefbb768e2"
+  },
+  {
+    "path": "results/reviewed-workflow/2026-10-26/sequence-manifest.json",
+    "bytes": 54105,
+    "sha256": "bf387a95255c44dee51b0ac12212e113e67ad5f5c8779c2c26e293916a72cd40"
+  },
+  {
+    "path": "results/reviewed-workflow/2026-10-26/tracking-104-108-evidence.json",
+    "bytes": 1820,
+    "sha256": "f83eff83c3607fc6519996e9d11bf8850d514789ed7caa1539ca0a69db1f5f52"
+  },
+  {
+    "path": "results/reviewed-workflow/2026-10-26/wood-stack-106.jpg",
+    "bytes": 182211,
+    "sha256": "de51627488522b83e2d22ddc128b9d34fda3da3106593ab25fb64018211802ea"
+  },
+  {
+    "path": "results/reviewed-workflow/2026-10-26/wood-stack-108.jpg",
+    "bytes": 183868,
+    "sha256": "3bc6261dedac4460d18616b1d7bc722ac5ceeac0dc0427156fbcd8e513e60546"
+  }
+]

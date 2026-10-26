@@ -1,0 +1,5 @@
+{
+  "prompts": [
+    {"frame": 0, "instance_key": "pallet_1", "pos_points": [[100, 200]], "neg_points": [[100, 250]]}
+  ]
+}
