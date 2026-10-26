@@ -1,0 +1,11 @@
+// ==UserScript==
+// @name         CVAT 自助标注面板（SAM3 自动跟踪）
+// @namespace    cvat-sam3-panel
+// @version      1.0.0
+// @description  在 CVAT 标注作业页注入 SAM3 自动跟踪悬浮面板：缓存帧→逐实例范围跟踪→跳转检查。凭据只从浏览器 Cookie 读取，不硬编码。
+// @author       leonlee233
+// @match        http://172.16.88.68:12080/*
+// @run-at       document-idle
+// @grant        GM_cookie.list
+// @grant        GM_cookie.set
+// ==/UserScript==
