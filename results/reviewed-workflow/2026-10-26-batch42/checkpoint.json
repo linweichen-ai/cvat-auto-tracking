@@ -1,0 +1,47 @@
+{
+  "task_id": 430,
+  "job_id": 423,
+  "frames": 150,
+  "last_run": "plan_20261026T123503785002Z",
+  "last_readback_sha256": "32fe8e420e22b2e8f9cba56f84267ce24b57bb04e24cc28525015309fb911a28",
+  "saved_masks": 702,
+  "nonempty_frames": 145,
+  "source_counts": {
+    "auto": 621,
+    "manual": 81
+  },
+  "label_counts": {
+    "201": 702
+  },
+  "verified_operations": 678,
+  "verified_actions": {
+    "create": 606,
+    "update": 72
+  },
+  "batches": 42,
+  "all_classes_completed_frames": 0,
+  "pallet_full_image_complete": false,
+  "classification": "Independent identifiable pallets only; integral wooden shipping-crate bases excluded. Separate wooden pallets below plastic crates remain included.",
+  "material_holds": [
+    {
+      "frame": 133,
+      "instance": "rack_upper_bottom_blue_clipped",
+      "material": "white corner strip retained pending evidence"
+    },
+    {
+      "frame": 146,
+      "instance": "rack_upper_bottom_blue_clipped",
+      "material": "white corner strip retained pending evidence"
+    },
+    {
+      "frame": 76,
+      "instance": "runA_wood_near_empty",
+      "material": "Side grey recess: original candidate held,13px local correction reviewed but not in this fixed checkpoint."
+    }
+  ],
+  "caution": "Counts are not accuracy, recall or completion. This is a fixed intermediate checkpoint.",
+  "pending_decisions": [
+    "Orange02 upper/right pallet physical identity same versus two; no dependent writes.",
+    "Top microgrille background-hole convention; no bulk recut."
+  ]
+}

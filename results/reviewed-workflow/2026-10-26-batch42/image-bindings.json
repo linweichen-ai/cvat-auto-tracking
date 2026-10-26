@@ -1,0 +1,66 @@
+[
+  {
+    "frame": 0,
+    "source_sha256": "75bb16a8e0db2c492f120f5d1a0cf8d1dc6e35c5e836bcb8cd2d8d29ef644975",
+    "image": "frame-000-saved.jpg",
+    "image_sha256": "c73c229af31372c4046cef252c406815672173c3e4f33f683c29e8337bc48f37",
+    "saved_shapes": 10,
+    "display_shape_ids": [
+      2402267,
+      2402749,
+      2402748,
+      2402308,
+      2401619,
+      2402747,
+      2402746,
+      2402745,
+      2402744,
+      2402266
+    ],
+    "visual_review": "ROOT_VIEWED_ORIGINAL_AND_SAVED_OVERLAY",
+    "full_image_completion_claim": false
+  },
+  {
+    "frame": 73,
+    "source_sha256": "8d6b94e221180cf656680c6aa975cff50338c90d98ac8b2ee99cdc353cd462b7",
+    "image": "frame-073-saved.jpg",
+    "image_sha256": "e33b9ff17d05ef8bb3f5189f6f7697a5fe20cfa95110d7e3b027b0e37e1b3bc5",
+    "saved_shapes": 4,
+    "display_shape_ids": [
+      2402737,
+      2402788,
+      2402787,
+      2402738
+    ],
+    "visual_review": "ROOT_VIEWED_ORIGINAL_AND_SAVED_OVERLAY",
+    "full_image_completion_claim": false
+  },
+  {
+    "frame": 77,
+    "source_sha256": "69ad80695574a699f08a9cf4d1786a12040c4d360147c502353f6b4746517101",
+    "image": "frame-077-saved.jpg",
+    "image_sha256": "938d2b70be01c0c39592e85b018efd9df9b2ee317ec5c223cbbdd19901bd85c4",
+    "saved_shapes": 4,
+    "display_shape_ids": [
+      2402797,
+      2402799,
+      2402798,
+      2402793
+    ],
+    "visual_review": "ROOT_VIEWED_ORIGINAL_AND_SAVED_OVERLAY",
+    "full_image_completion_claim": false
+  },
+  {
+    "frame": 38,
+    "source_sha256": "1be1ac084ff001937a6c2b1b65822780c9c9845be34552c37526b71e3262df21",
+    "image": "frame-038-saved.jpg",
+    "image_sha256": "9afa1acb56b1ebce697b8e1b19de3fe0704f3750261c3c02c2291daff669b78b",
+    "saved_shapes": 2,
+    "display_shape_ids": [
+      2402733,
+      2402810
+    ],
+    "visual_review": "ROOT_VIEWED_ORIGINAL_AND_SAVED_OVERLAY",
+    "full_image_completion_claim": false
+  }
+]

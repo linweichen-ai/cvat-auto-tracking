@@ -2,7 +2,7 @@
 
 本仓库保存 CVAT 辅助标注工具、真实任务的中间证据，以及可迁移到新任务的审核与增量写入流程。
 
-**最新本地阶段：[Task3 第35批图文报告](docs/reports/2026-10-26-task3-batch35.md)**
+**最新本地阶段：[Task3 第42批图文报告](docs/reports/2026-10-26-task3-batch42.md)**
 
 [早期204个mask固定快照](docs/reports/2026-10-26-task3-reviewed-workflow.md)继续保留。
 
@@ -10,7 +10,7 @@
 
 ## 当前状态
 
-Task3 对应 task 430 / job 423，共 150 帧。第35批写后快照保存 **574 个 pallet mask，121 帧非空**；35批共 **550 次回读验证操作，478次新增、72次更新**。全图 pallet 查漏仍在进行，其余六类尚未写入。公开发布已获授权，但 GitHub 凭据写入返回403；用户选择稍后处理，新增材料目前只保存在本地分支。
+Task3 对应 task 430 / job 423，共 150 帧。第42批写后快照保存 **702 个 pallet mask，145 帧非空**；42批共 **678 次回读验证操作，606次新增、72次更新**。全图 pallet 查漏仍在进行，其余六类尚未写入。公开发布已获授权，但 GitHub 凭据写入返回403；用户选择稍后处理，新增材料目前只保存在本地分支。
 
 这些数量不表示准确率、召回率或完成率。旧版“492 个 shape / 116 帧”记录的是历史传播产出；发现错分、合并、漏标后，已撤回将其视为整段质量验收的结论。旧产物保留用于追溯。
 
@@ -18,9 +18,9 @@ Task3 对应 task 430 / job 423，共 150 帧。第35批写后快照保存 **574
 
 | 需要 | 入口 |
 |---|---|
-| 看原图、补标前后、失败案例与操作账本 | [图文阶段报告](docs/reports/2026-10-26-task3-reviewed-workflow.md) |
+| 看原图、补标前后、失败案例与操作账本 | [最新第42批报告](docs/reports/2026-10-26-task3-batch42.md)、[第35批报告](docs/reports/2026-10-26-task3-batch35.md)、[最初报告](docs/reports/2026-10-26-task3-reviewed-workflow.md) |
 | 在新 task/job 上复用流程 | [workflow 工具与命令](workflow/README.md) |
-| 检查保存状态与每批实际写入 | [机器可读快照](results/reviewed-workflow/2026-10-26/checkpoint.json)、[操作账本](results/reviewed-workflow/2026-10-26/operation-ledger.json) |
+| 检查保存状态与每批实际写入 | [机器可读快照](results/reviewed-workflow/2026-10-26-batch42/checkpoint.json)、[操作账本](results/reviewed-workflow/2026-10-26-batch42/operation-ledger.json) |
 | 核对图像、源帧顺序及证据哈希 | [图像绑定](results/reviewed-workflow/2026-10-26/image-bindings.json)、[时序清单](results/reviewed-workflow/2026-10-26/sequence-manifest.json)、[产物 SHA256](results/reviewed-workflow/2026-10-26/asset-manifest.json) |
 | 使用已有浏览器辅助面板 | [历史面板使用说明](docs/overlay-usage.md) |
 

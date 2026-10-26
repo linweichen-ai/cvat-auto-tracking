@@ -1,0 +1,34 @@
+[
+  {
+    "file": "checkpoint.json",
+    "sha256": "ba9e7aecae6e6e1a609c7e7524e95f7846ebf233b0ebca79084e56cfe320e344"
+  },
+  {
+    "file": "frame-000-saved.jpg",
+    "sha256": "c73c229af31372c4046cef252c406815672173c3e4f33f683c29e8337bc48f37"
+  },
+  {
+    "file": "frame-038-saved.jpg",
+    "sha256": "9afa1acb56b1ebce697b8e1b19de3fe0704f3750261c3c02c2291daff669b78b"
+  },
+  {
+    "file": "frame-073-saved.jpg",
+    "sha256": "e33b9ff17d05ef8bb3f5189f6f7697a5fe20cfa95110d7e3b027b0e37e1b3bc5"
+  },
+  {
+    "file": "frame-077-saved.jpg",
+    "sha256": "938d2b70be01c0c39592e85b018efd9df9b2ee317ec5c223cbbdd19901bd85c4"
+  },
+  {
+    "file": "image-bindings.json",
+    "sha256": "93171f08f612858e0b85045fcea0a17ac4041025d55f98b66ccdefbebf88b029"
+  },
+  {
+    "file": "operation-ledger.json",
+    "sha256": "079756c10a4a4b0720e15ebc86fadd7d65a663895a5157c2faa40101ab844efd"
+  },
+  {
+    "file": "saved-annotations.json",
+    "sha256": "c303caf98ee99b30238d4781e17f53a62ca7aef4f72dc1ecb6ebdd4e53ac4851"
+  }
+]
