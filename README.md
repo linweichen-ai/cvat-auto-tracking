@@ -2,15 +2,15 @@
 
 本仓库保存 CVAT 辅助标注工具、真实任务的中间证据，以及可迁移到新任务的审核与增量写入流程。
 
-**最新本地阶段：[Task3 第57批图文报告](docs/reports/2026-10-26-task3-batch57.md)**
+**最新本地结果：[Task3 150帧七类完成报告](docs/reports/2026-10-27-task3-final.md)**
 
 [早期204个mask固定快照](docs/reports/2026-10-26-task3-reviewed-workflow.md)继续保留。
 
-![Task3 第0帧原图与第57批保存状态](results/reviewed-workflow/2026-10-26-batch57/frame-000-saved.jpg)
+![Task3 第0帧原图与最终保存状态](results/reviewed-workflow/2026-10-27-final/frame-000-saved.jpg)
 
 ## 当前状态
 
-Task3 对应 task 430 / job 423，共 150 帧。第57批写后快照保存 **1,161 个 mask，150 帧非空**，其中 **1,006 个 pallet 已完成全图实用覆盖审核**；其余包括 100 个 ego、50 个 floor、5 个 person。57批累计 **1,143 次回读验证操作，1,065次新增、78次更新**。其他类别仍在推进，全类别验收完成帧数为 0。公开发布已获授权，但 GitHub 凭据写入返回403；用户选择稍后处理，新增材料目前只保存在本地分支。
+Task3 对应 task 430 / job 423，共 150 帧。七类已按约定实用精度完成全图覆盖复核，最终保存 **1,550 个 mask**：pallet 1006、person 16、floor 150、slope 8、ego 150、other_robot 215、cargo_floor 5。79 批累计 **1,534 次回读验证操作**。覆盖记录绑定最终保存快照，保留少量有理由的身份排除与历史极小边界容差。公开发布已获授权，但 GitHub 写入403尚未解决；新增材料已本地整理，尚未推送。
 
 这些数量不表示准确率、召回率或完成率。旧版“492 个 shape / 116 帧”记录的是历史传播产出；发现错分、合并、漏标后，已撤回将其视为整段质量验收的结论。旧产物保留用于追溯。
 
@@ -18,10 +18,10 @@ Task3 对应 task 430 / job 423，共 150 帧。第57批写后快照保存 **1,1
 
 | 需要 | 入口 |
 |---|---|
-| 看原图、补标前后、失败案例与操作账本 | [最新第57批报告](docs/reports/2026-10-26-task3-batch57.md)、[第42批报告](docs/reports/2026-10-26-task3-batch42.md)、[第35批报告](docs/reports/2026-10-26-task3-batch35.md)、[最初报告](docs/reports/2026-10-26-task3-reviewed-workflow.md) |
+| 看原图、补标前后、失败案例与操作账本 | [最终150帧报告](docs/reports/2026-10-27-task3-final.md)、[第57批报告](docs/reports/2026-10-26-task3-batch57.md)、[第42批报告](docs/reports/2026-10-26-task3-batch42.md)、[第35批报告](docs/reports/2026-10-26-task3-batch35.md)、[最初报告](docs/reports/2026-10-26-task3-reviewed-workflow.md) |
 | 在新 task/job 上复用流程 | [workflow 工具与命令](workflow/README.md) |
-| 检查保存状态与每批实际写入 | [机器可读快照](results/reviewed-workflow/2026-10-26-batch57/checkpoint.json)、[操作账本](results/reviewed-workflow/2026-10-26-batch57/operation-ledger.json) |
-| 核对图像、源帧顺序及证据哈希 | [图像绑定](results/reviewed-workflow/2026-10-26-batch57/image-bindings.json)、[时序清单](results/reviewed-workflow/2026-10-26/sequence-manifest.json)、[产物 SHA256](results/reviewed-workflow/2026-10-26-batch57/asset-manifest.json) |
+| 检查保存状态与每批实际写入 | [机器可读快照](results/reviewed-workflow/2026-10-27-final/checkpoint.json)、[操作账本](results/reviewed-workflow/2026-10-27-final/operation-ledger.json) |
+| 核对图像、源帧顺序及证据哈希 | [图像绑定](results/reviewed-workflow/2026-10-27-final/image-bindings.json)、[时序清单](results/reviewed-workflow/2026-10-26/sequence-manifest.json)、[产物 SHA256](results/reviewed-workflow/2026-10-27-final/asset-manifest.json) |
 | 使用已有浏览器辅助面板 | [历史面板使用说明](docs/overlay-usage.md) |
 
 ## 可复用工作流

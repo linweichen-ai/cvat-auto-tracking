@@ -33,6 +33,7 @@ def main():
     ap.add_argument("--tag", required=True)
     ap.add_argument("--frames", nargs="+", type=int, required=True)
     ap.add_argument("--pallet-coverage-complete", action="store_true", help="Bind the independently completed practical coverage receipt")
+    ap.add_argument("--all-classes-coverage-complete", action="store_true", help="Require the final 150-frame coverage receipt to match this exact saved snapshot")
     args = ap.parse_args()
     assert all(ch.isalnum() or ch in "-_" for ch in args.tag)
     root = args.evidence_root.resolve()
@@ -40,12 +41,28 @@ def main():
     assert final_run.is_dir()
     final_path = sorted(final_run.glob("step_*/after.json"))[-1]
     final = read(final_path)
+    all_coverage = None
+    if args.all_classes_coverage_complete:
+        all_coverage = read(root / 'ALL_CLASSES_COVERAGE_COMPLETE.json')
+        assert all_coverage['status'] == 'PRACTICAL_SEVEN_CLASS_COVERAGE_REVIEW_COMPLETE'
+        assert all_coverage['snapshot_sha256'] == sha(final_path)
+        assert sorted(all_coverage['completed_frames']) == list(range(150))
+        assert all_coverage['structural_errors'] == 0
     dest = Path(__file__).resolve().parents[3] / "results/reviewed-workflow" / args.tag
     dest.mkdir(parents=True, exist_ok=False)
+    # Fixed evidence hashes must survive Git's Windows line-ending conversion.
+    (dest / '.gitattributes').write_bytes(b'* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol\n')
+    if all_coverage is not None:
+        save(dest / 'all-classes-coverage-review.json', all_coverage)
     if args.pallet_coverage_complete:
         coverage = read(root / 'PALLET_COVERAGE_COMPLETE.json')
         assert coverage['status'] == 'PRACTICAL_FULL_IMAGE_COVERAGE_REVIEW_COMPLETE'
         assert sum(s['label_id'] == 201 for s in final['shapes']) == coverage['saved_pallet_count']
+        if all_coverage is None:
+            prior = root / coverage['snapshot'].replace('\\', '/')
+            assert sha(prior) == coverage['snapshot_sha256']
+            select_pallets = lambda d: sorted((s for s in d['shapes'] if s['label_id'] == 201), key=lambda s: s['id'])
+            assert select_pallets(read(prior)) == select_pallets(final), 'Changed pallets require a new exact-snapshot coverage receipt'
         save(dest / 'pallet-coverage-review.json', coverage)
     ledger = []
     for run in sorted((root / "incremental_runs").glob("plan_*")):
@@ -69,18 +86,25 @@ def main():
                "label_counts": dict(collections.Counter(str(s["label_id"]) for s in final["shapes"])),
                "verified_operations": sum(r["verified_operations"] for r in ledger),
                "verified_actions": dict(sum((collections.Counter(r["actions"]) for r in ledger), collections.Counter())),
-               "batches": len(ledger), "all_classes_completed_frames": 0,
+               "batches": len(ledger), "all_classes_completed_frames": 150 if all_coverage else 0,
                "pallet_full_image_complete": args.pallet_coverage_complete,
                "classification": "Independent identifiable pallets only; integral wooden shipping-crate bases excluded. Separate wooden pallets below plastic crates remain included.",
                "material_holds": [] if args.pallet_coverage_complete else [{"frame": f, "instance": "rack_upper_bottom_blue_clipped", "material": "white corner strip retained pending evidence"} for f in [133, 146]],
-               "caution": "Counts are not accuracy, recall or completion. This is a fixed intermediate checkpoint."}
+               "caution": "Practical source-reviewed coverage is not a measured pixel accuracy, precision or recall score." if all_coverage else "Counts are not accuracy, recall or completion. This is a fixed intermediate checkpoint."}
     save(dest / "checkpoint.json", summary)
     save(dest / "operation-ledger.json", ledger)
-    save(dest / "saved-annotations.json", final)
+    # Keep the exact readback bytes so the exported snapshot shares its receipt SHA.
+    (dest / "saved-annotations.json").write_bytes(final_path.read_bytes())
     bindings = []
+    reviewed_sources = {}
+    if all_coverage:
+        reviewed_sources = {r['frame']: r['source_image_sha256'] for r in all_coverage['source_images']}
+        assert sorted(reviewed_sources) == list(range(summary['frames']))
     colors = [(235, 35, 160), (30, 220, 190), (170, 70, 245), (240, 130, 45), (240, 220, 20)]
     for frame in args.frames:
         src = root / f"baseline/live_20261026T070739278666Z/frame_api_{frame:03d}.jpg"
+        if all_coverage:
+            assert sha(src) == reviewed_sources[frame], ('Source image differs from completed coverage review', frame)
         original = Image.open(src).convert("RGB")
         overlay = np.asarray(original).astype(float)
         shapes = [s for s in final["shapes"] if s["frame"] == frame]
@@ -96,6 +120,8 @@ def main():
         draw = ImageDraw.Draw(canvas)
         draw.text((8, 6), f"Frame {frame} | ORIGINAL / SAVED MASKS {len(shapes)} | CHECKPOINT {summary['saved_masks']} MASKS", fill="white")
         caption = "Pallet coverage reviewed; other classes in progress. Floor=cyan Ego=pink Person=orange." if args.pallet_coverage_complete else "Intermediate evidence: full-image coverage and material review still in progress."
+        if all_coverage:
+            caption = "Seven-class coverage reviewed. Floor=cyan Ego=pink Person=orange Robot=purple Slope=yellow CargoFloor=blue."
         draw.text((8, 23), caption, fill="white")
         for i, mask in enumerate(masks):
             yy, xx = np.where(mask)
