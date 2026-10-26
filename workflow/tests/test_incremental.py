@@ -85,6 +85,19 @@ class SafetyTests(unittest.TestCase):
             with self.subTest(points=points), self.assertRaises(tool.GuardError):
                 tool.validate_mask(points, 4, 3)
 
+    def test_manual_geometry_update_preserves_id_source_and_all_metadata(self):
+        base = baseline()
+        original = base["annotations"]["shapes"][0]
+        original.update(group=42, occluded=True, z_order=5, score=0.7,
+                        attributes=[{"spec_id": 8, "value": "human-reviewed"}])
+        points = [0, 1, 1, 1, 1, 1]
+        proposal = candidate([{"frame": 0, "action": "update", "shape_id": 10, "points": points}])
+        client = FakeClient(base["annotations"])
+        with tempfile.TemporaryDirectory() as folder:
+            result = tool.apply_candidate(client, proposal, base, Path(folder))
+        self.assertEqual(result[0]["status"], "READBACK_VERIFIED")
+        self.assertEqual(client.data["shapes"][0], {**original, "points": points})
+
 
     def test_scope_and_candidate_binding_rejected(self):
         for field, value in (("task_id", 102), ("job_id", 8), ("label_id", 202), ("baseline_annotations_sha256", "wrong"), ("frame_metadata_sha256", "wrong")):

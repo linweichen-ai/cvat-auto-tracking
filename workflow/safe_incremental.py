@@ -156,7 +156,8 @@ def prepare_change(change, baseline):
         validate_mask(shape["points"], size["width"], size["height"])
     else:
         shape["points"] = validate_mask(change.get("points"), size["width"], size["height"])
-        shape["source"] = "auto"
+        # New instances start as auto above. Local geometry corrections retain
+        # the original source and metadata, including manual annotation origin.
         require(not shape.get("outside", False), "OUTSIDE_TARGET_UNSUPPORTED")
         if "occluded" in change:
             require(type(change["occluded"]) is bool, "OCCLUDED_MUST_BE_BOOLEAN")

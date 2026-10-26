@@ -2,7 +2,7 @@
 
 这套工具把候选生成、审核和远端修改分开。SAM2 只返回候选 mask；默认计划命令完全离线。只有带 `--apply`、绑定审核摘要的计划会向指定 Job 发送单个实例的 PATCH。不会发送全量 PUT，也不会调用异步自动标注接口。
 
-本目录是从实际标注过程整理的配置版。**32 项离线测试通过；配置版未对另一个真实服务做写入验证。** 使用前先核对自己的 CVAT/SAM2 合约，并按小批候选、双审、增量写回推进。
+本目录是从实际标注过程整理的配置版。**33 项离线测试通过；配置版未对另一个真实服务做写入验证。** 使用前先核对自己的 CVAT/SAM2 合约，并按小批候选、双审、增量写回推进。
 
 ```mermaid
 flowchart LR
@@ -81,7 +81,7 @@ python -m workflow --config workflow/config.local.json --label pallet plan --bas
 python -m workflow --config workflow/config.local.json --label pallet plan --baseline workflow/work/baseline --candidate workflow/work/reviewed-plan.json --apply --out workflow/work/apply-001
 ```
 
-`bind` 只生成 create 计划，且本身不联网。需要 update/delete 时，明确编写 `changes` 并指定精确 `shape_id`，按同样摘要审核流程处理。`occluded` 可显式设置为布尔值；create 默认 false，update 未指定则保留原值，delete 不接受该字段。
+`bind` 只生成 create 计划，且本身不联网。需要 update/delete 时，明确编写 `changes` 并指定精确 `shape_id`，按同样摘要审核流程处理。局部几何修正保留原 ID、source 和其他元数据，人工标注不会被改成 auto。`occluded` 可显式设置为布尔值；create 默认 false，update 未指定则保留原值，delete 不接受该字段。
 
 写入约束：
 
