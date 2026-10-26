@@ -32,6 +32,7 @@ def main():
     ap.add_argument("--through-run", required=True)
     ap.add_argument("--tag", required=True)
     ap.add_argument("--frames", nargs="+", type=int, required=True)
+    ap.add_argument("--pallet-coverage-complete", action="store_true", help="Bind the independently completed practical coverage receipt")
     args = ap.parse_args()
     assert all(ch.isalnum() or ch in "-_" for ch in args.tag)
     root = args.evidence_root.resolve()
@@ -40,7 +41,12 @@ def main():
     final_path = sorted(final_run.glob("step_*/after.json"))[-1]
     final = read(final_path)
     dest = Path(__file__).resolve().parents[3] / "results/reviewed-workflow" / args.tag
-    dest.mkdir(parents=True, exist_ok=True)
+    dest.mkdir(parents=True, exist_ok=False)
+    if args.pallet_coverage_complete:
+        coverage = read(root / 'PALLET_COVERAGE_COMPLETE.json')
+        assert coverage['status'] == 'PRACTICAL_FULL_IMAGE_COVERAGE_REVIEW_COMPLETE'
+        assert sum(s['label_id'] == 201 for s in final['shapes']) == coverage['saved_pallet_count']
+        save(dest / 'pallet-coverage-review.json', coverage)
     ledger = []
     for run in sorted((root / "incremental_runs").glob("plan_*")):
         if run.name > args.through_run or not (run / "results.json").exists():
@@ -64,9 +70,9 @@ def main():
                "verified_operations": sum(r["verified_operations"] for r in ledger),
                "verified_actions": dict(sum((collections.Counter(r["actions"]) for r in ledger), collections.Counter())),
                "batches": len(ledger), "all_classes_completed_frames": 0,
-               "pallet_full_image_complete": False,
+               "pallet_full_image_complete": args.pallet_coverage_complete,
                "classification": "Independent identifiable pallets only; integral wooden shipping-crate bases excluded. Separate wooden pallets below plastic crates remain included.",
-               "material_holds": [{"frame": f, "instance": "rack_upper_bottom_blue_clipped", "material": "white corner strip retained pending evidence"} for f in [133, 146]],
+               "material_holds": [] if args.pallet_coverage_complete else [{"frame": f, "instance": "rack_upper_bottom_blue_clipped", "material": "white corner strip retained pending evidence"} for f in [133, 146]],
                "caution": "Counts are not accuracy, recall or completion. This is a fixed intermediate checkpoint."}
     save(dest / "checkpoint.json", summary)
     save(dest / "operation-ledger.json", ledger)
@@ -81,14 +87,16 @@ def main():
         masks = []
         for i, shape in enumerate(shapes):
             mask = decode_mask(shape["points"], image_width=640, image_height=480).astype(bool)
-            overlay[mask] = overlay[mask] * .6 + np.array(colors[i % len(colors)]) * .4
+            color = {202:(245,90,40),203:(20,220,220),204:(245,210,35),205:(235,35,160),206:(140,80,245),207:(80,150,240)}.get(shape['label_id'],colors[i % len(colors)])
+            overlay[mask] = overlay[mask] * .6 + np.array(color) * .4
             masks.append(mask)
         canvas = Image.new("RGB", (1280, 520), (20, 24, 30))
         canvas.paste(original, (0, 40))
         canvas.paste(Image.fromarray(overlay.astype("uint8")), (640, 40))
         draw = ImageDraw.Draw(canvas)
         draw.text((8, 6), f"Frame {frame} | ORIGINAL / SAVED MASKS {len(shapes)} | CHECKPOINT {summary['saved_masks']} MASKS", fill="white")
-        draw.text((8, 23), "Intermediate evidence: full-image coverage and material review still in progress.", fill="white")
+        caption = "Pallet coverage reviewed; other classes in progress. Floor=cyan Ego=pink Person=orange." if args.pallet_coverage_complete else "Intermediate evidence: full-image coverage and material review still in progress."
+        draw.text((8, 23), caption, fill="white")
         for i, mask in enumerate(masks):
             yy, xx = np.where(mask)
             # Place numbers on an actual mask pixel, never over the excluded cargo.

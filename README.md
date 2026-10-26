@@ -2,15 +2,15 @@
 
 本仓库保存 CVAT 辅助标注工具、真实任务的中间证据，以及可迁移到新任务的审核与增量写入流程。
 
-**最新本地阶段：[Task3 第42批图文报告](docs/reports/2026-10-26-task3-batch42.md)**
+**最新本地阶段：[Task3 第57批图文报告](docs/reports/2026-10-26-task3-batch57.md)**
 
 [早期204个mask固定快照](docs/reports/2026-10-26-task3-reviewed-workflow.md)继续保留。
 
-![Task3 全图托盘补标前后对比](results/reviewed-workflow/2026-10-26/frame-100-progress.jpg)
+![Task3 第0帧原图与第57批保存状态](results/reviewed-workflow/2026-10-26-batch57/frame-000-saved.jpg)
 
 ## 当前状态
 
-Task3 对应 task 430 / job 423，共 150 帧。第42批写后快照保存 **702 个 pallet mask，145 帧非空**；42批共 **678 次回读验证操作，606次新增、72次更新**。全图 pallet 查漏仍在进行，其余六类尚未写入。公开发布已获授权，但 GitHub 凭据写入返回403；用户选择稍后处理，新增材料目前只保存在本地分支。
+Task3 对应 task 430 / job 423，共 150 帧。第57批写后快照保存 **1,161 个 mask，150 帧非空**，其中 **1,006 个 pallet 已完成全图实用覆盖审核**；其余包括 100 个 ego、50 个 floor、5 个 person。57批累计 **1,143 次回读验证操作，1,065次新增、78次更新**。其他类别仍在推进，全类别验收完成帧数为 0。公开发布已获授权，但 GitHub 凭据写入返回403；用户选择稍后处理，新增材料目前只保存在本地分支。
 
 这些数量不表示准确率、召回率或完成率。旧版“492 个 shape / 116 帧”记录的是历史传播产出；发现错分、合并、漏标后，已撤回将其视为整段质量验收的结论。旧产物保留用于追溯。
 
@@ -18,10 +18,10 @@ Task3 对应 task 430 / job 423，共 150 帧。第42批写后快照保存 **702
 
 | 需要 | 入口 |
 |---|---|
-| 看原图、补标前后、失败案例与操作账本 | [最新第42批报告](docs/reports/2026-10-26-task3-batch42.md)、[第35批报告](docs/reports/2026-10-26-task3-batch35.md)、[最初报告](docs/reports/2026-10-26-task3-reviewed-workflow.md) |
+| 看原图、补标前后、失败案例与操作账本 | [最新第57批报告](docs/reports/2026-10-26-task3-batch57.md)、[第42批报告](docs/reports/2026-10-26-task3-batch42.md)、[第35批报告](docs/reports/2026-10-26-task3-batch35.md)、[最初报告](docs/reports/2026-10-26-task3-reviewed-workflow.md) |
 | 在新 task/job 上复用流程 | [workflow 工具与命令](workflow/README.md) |
-| 检查保存状态与每批实际写入 | [机器可读快照](results/reviewed-workflow/2026-10-26-batch42/checkpoint.json)、[操作账本](results/reviewed-workflow/2026-10-26-batch42/operation-ledger.json) |
-| 核对图像、源帧顺序及证据哈希 | [图像绑定](results/reviewed-workflow/2026-10-26/image-bindings.json)、[时序清单](results/reviewed-workflow/2026-10-26/sequence-manifest.json)、[产物 SHA256](results/reviewed-workflow/2026-10-26/asset-manifest.json) |
+| 检查保存状态与每批实际写入 | [机器可读快照](results/reviewed-workflow/2026-10-26-batch57/checkpoint.json)、[操作账本](results/reviewed-workflow/2026-10-26-batch57/operation-ledger.json) |
+| 核对图像、源帧顺序及证据哈希 | [图像绑定](results/reviewed-workflow/2026-10-26-batch57/image-bindings.json)、[时序清单](results/reviewed-workflow/2026-10-26/sequence-manifest.json)、[产物 SHA256](results/reviewed-workflow/2026-10-26-batch57/asset-manifest.json) |
 | 使用已有浏览器辅助面板 | [历史面板使用说明](docs/overlay-usage.md) |
 
 ## 可复用工作流
@@ -34,7 +34,7 @@ flowchart LR
   D --> E[独立二次审核]
   E --> F[单写入者逐实例 PATCH]
   F --> G[回读核验与留存证据]
-  G --> H[发布阶段图文与下一批]
+  G --> H[固定阶段图文与下一批]
 ```
 
 当前验证过的候选路线为本地双向光流辅助 + SAM2 提示分割精修。服务发现中有 SAM2 interactor，没有确认可用的原生 CVAT `kind: tracker`。不能把提示分割的速度或候选数量当作已部署的视频跟踪质量。
@@ -44,7 +44,8 @@ flowchart LR
 - 所有候选绑定原图和元数据；逻辑帧号不能替代真实时间顺序。
 - 一个自动写入者；目标帧内容改变就跳过，避免覆盖手工编辑。
 - 每次只提交一个已批准 shape，再回读验证。未知写入结果先查明，不盲目重试。
-- GitHub 每次固定一个快照，区分候选、审核、写入和整体完成。
+- 每次阶段记录固定一个快照，区分候选、审核、写入、单类覆盖和全部类别完成。
+- 三段作者并行生成，只有主控写入；细网格整体保留，优先正确类别、物理实例、明显遮挡和大边界。
 
 ## 目录
 
