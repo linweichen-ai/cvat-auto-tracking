@@ -48,3 +48,21 @@
 [new]    tests/render_demo.py
 ```
 
+## 2026-10-26 12:58:48 +08:00
+
+- commit message: `全量传播结果：job423 150帧 492 shapes，关键帧截图与README工作流 (2026-10-26 12:58:48 +08:00)`
+- changed files:
+
+```
+[new]    README.md
+[new]    results/full-propagation/
+[new]    tests/render_full.py
+```
+
+## 2026-10-26 事件记录：job423 误清空与恢复
+
+- 事件：线上 CVAT job 423（Task 3 / 150 帧）在协作过程中被某 Agent 误清空，仅剩 1–2 个新种子 shape。
+- 恢复：使用本地留存的 492-shape 备份（`results/full-propagation/job423-full-annotations.json`）通过 CVAT API PUT 整体回写。
+- 复核：API 拉取线上标注，确认 **492 shapes / 116 帧**，与备份 MATCH；恢复前的现场快照保存在 `results/full-propagation/job423-before-restore-1shape.json`。
+- 教训：传播/恢复类写操作前必须先 GET 备份；多 Agent 并发写同一 job 时需串行化。
+
