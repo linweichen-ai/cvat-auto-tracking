@@ -1,34 +1,38 @@
 # DevOps / 仓库运维状态
 
 ## 当前状态
-- 阶段：**GitHub 远程仓库已创建（public），本地首次提交已就绪，但 push 被 PAT 权限阻塞**。
-- 远程仓库：https://github.com/linweichen-ai/cvat-auto-tracking （PUBLIC，default branch main）
-- 本地提交：`d7a00d6` "Initial commit: CVAT auto-tracking repo skeleton ..."（15 文件，574 行）
-- git / gh 已安装（git 2.56.0、gh 2.103.2）；gh 已登录 linweichen-ai（keyring 存储 token）。
-- 本仓库级 credential helper 已强制指向 `gh auth git-credential`（绕过 GCM 旧缓存）。
+- 阶段：**仓库已打通，main 分支与远程同步，实时推送机制就绪**。
+- 远程仓库：https://github.com/linweichen-ai/cvat-auto-tracking （PUBLIC，default branch `main`）
+- 本地与远程 HEAD：`08e53f8`（已 `git ls-remote` 校验一致）
+- 认证方式：classic PAT 通过环境变量 `GH_TOKEN` 注入 gh CLI 与 git credential helper（token 不落盘、不入仓库）。
+  - 注：gh keyring 中仍保留旧 fine-grained token，但 push 实际走 `GH_TOKEN` 环境变量。
+- 本仓库 credential helper：`!gh auth git-credential`（已绕过 GCM 旧缓存）。
+- `core.quotepath=false` 已配置，中文文件名正常显示。
 
 ## 最近完成
 - 2026-10-26：
-  - 创建仓库骨架：README.md、.gitignore、LICENSE(MIT)、sync-to-github.ps1。
-  - 创建部署脚本框架：`deploy/deploy.ps1`（Windows 侧 SSH/SCP）、`deploy/deploy.sh`（Linux 侧 nuctl）。
-  - 确认已有产物保留：`docs/reports/REPORT-01-*.md`、`status/TIMELINE.md`、`status/model-research.md`。
-  - 建立 `docs/CHANGELOG.md` 自动追加机制（由 sync 脚本写入）。
-  - `git init -b main`、配置 local user.name/email、完成首次提交 d7a00d6。
-  - `gh repo create linweichen-ai/cvat-auto-tracking --public` 成功，远程仓库已存在。
+  - 创建仓库骨架（README/.gitignore/LICENSE/sync-to-github.ps1/deploy 脚本/状态文件）。
+  - `gh repo create linweichen-ai/cvat-auto-tracking --public` 建库。
+  - 首次提交（rebase 后 `b2105dc`）：15 文件。
+  - 第二次提交 `08e53f8`：35 文件，+35836 行，包含：
+    - userscript/ + extension/（CVAT 页面注入与悬浮面板）
+    - serverless/tracker/transt/（TransT tracker 函数骨架）
+    - docs/ 新增 deploy-runbook / model-selection / nuclio-setup / overlay-usage / REPORT-02 / REPORT-03
+    - tests/e2e_test.py、tools/build.ps1
+    - results/ 下 e2e 日志、job419 标注备份、panel-render.png
+  - 清理远程探针文件 `.perm-probe`（API DELETE，提交 `255def1`）。
+  - 修复 sync-to-github.ps1：porcelain 解析偏移、CHANGELOG 表头重复日期、中文路径转义。
 
 ## 下一步
-1. **【阻塞解除后立即执行】** 用户在 GitHub PAT 设置页给该 fine-grained token 补：Repository permissions → **Contents: Read and write**（并确认 Repository access 包含本仓库，或选 All repositories）。
-2. 若只是编辑原 token 权限（未重新生成），直接重跑：`git push -u origin main`。
-3. 若重新生成了新 token，先 `gh auth login --with-token`（stdin）再 push。
-4. 推送成功后验证：`git ls-remote origin`、`gh repo view`。
-5. 之后每次新产物落地，执行 `.\sync-to-github.ps1 -Message "..."` 实时入库。
+1. 每次新产物落地后执行：`.\sync-to-github.ps1 -Message "说明"`。
+   - 脚本自动：追加 docs/CHANGELOG.md → git add -A → 带时间戳 commit → push。
+   - 注意：PowerShell 会话内需先 `$env:GH_TOKEN = "<token>"`（或改用 `gh auth login` 持久化）。
+2. 待服务器 SSH 凭据到位后：按 docs/deploy-runbook.md 在 172.16.88.68 上装 Nuclio 并部署 TransT tracker。
+3. 在 CVAT UI 上跑通"首帧标注 → 自动跟踪"端到端演示。
 
 ## 阻塞问题
-- **PAT 权限不足**：fine-grained token 当前可读仓库、可建仓库，但 **Contents 写权限未授予**，git push 与 Contents API PUT 均返回 403 `Resource not accessible by personal access token`。
-  - 已验证：`gh api repos/.../permissions` 显示 owner 视角 push=true，但 token 自身 scope 不含 Contents:write。
-  - 已排除：GCM 旧凭据缓存（已 erase 并改用 gh helper）；网络问题（API 读正常）。
-- 等待目标服务器（172.16.88.68）SSH 凭据，用于后续 Nuclio 部署（与建库并行，不阻塞）。
+- 无。
+- （历史）旧 fine-grained PAT 缺 Contents:write，已由用户换发 classic token 解决。
 
 ## 更新时间
-- 2026-10-26（建库完成、push 阻塞待解）
-
+- 2026-10-26（仓库打通，实时推送就绪）

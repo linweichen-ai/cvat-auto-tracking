@@ -32,6 +32,9 @@ if (-not (Test-Path ".git")) {
     if ($LASTEXITCODE -ne 0) { Write-Error "[sync] git init failed."; exit 1 }
 }
 
+# Show non-ASCII paths (e.g. Chinese filenames) as UTF-8, not octal escapes.
+git config core.quotepath false
+
 # Snapshot pending changes BEFORE we touch CHANGELOG.
 $pending = git status --porcelain
 if (-not $pending) {
@@ -48,11 +51,11 @@ if ([string]::IsNullOrWhiteSpace($Message)) {
     $subject = "$Message ($stamp)"
 }
 
-# Summarize changed files (first ~30 lines to keep changelog readable).
+# Summarize changed files. Porcelain v1 format: XY<filename> where XY occupies
+# columns 0-1, column 2 is a space, filename starts at column 3.
 $summary = ($pending | ForEach-Object {
-    $line = $_.Trim()
-    $statusChar = $line.Substring(0,2).Trim()
-    $file = $line.Substring(3)
+    $statusChar = $_.Substring(0,2)
+    $file = $_.Substring(3).Trim('"')
     switch -Wildcard ($statusChar) {
         "A*" { "[add]    $file" }
         "M*" { "[mod]    $file" }
@@ -76,7 +79,7 @@ if (-not (Test-Path $changelog)) {
 }
 
 $entry = @"
-## $isoDay $stamp
+## $stamp
 
 - commit message: ``$subject``
 - changed files:
