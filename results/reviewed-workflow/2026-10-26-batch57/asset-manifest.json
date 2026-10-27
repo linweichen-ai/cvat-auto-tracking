@@ -1,0 +1,38 @@
+[
+  {
+    "file": "checkpoint.json",
+    "sha256": "11118ff611e3e1ac4d21ba0014ebceec7195ad7e6bc9d0a9377b18de63b320b6"
+  },
+  {
+    "file": "frame-000-saved.jpg",
+    "sha256": "90ceb87df899cf5290ddb4c0c99b755e953f60e4648d97dc320fd0a258ee70be"
+  },
+  {
+    "file": "frame-021-saved.jpg",
+    "sha256": "e4546a35344622fa732ce28bff6146663613014980f8acceccb50c819c9b57dd"
+  },
+  {
+    "file": "frame-069-saved.jpg",
+    "sha256": "e211afcdead5ef0c76e8dec7815f0511754d0e220113ec173aab1d09e25b5fa5"
+  },
+  {
+    "file": "frame-132-saved.jpg",
+    "sha256": "37535ee735cdc4f40304422614c3dbfe12388873f6440cc4de3f24cc4232497a"
+  },
+  {
+    "file": "image-bindings.json",
+    "sha256": "e9c19b98b76596a4e9fd59af3c8b012c47aa50542dc58be85d29bdaf0fd07d90"
+  },
+  {
+    "file": "operation-ledger.json",
+    "sha256": "2e6c1196e7d4dc454229abf4905831590865abff5c878579311600e2921fd19c"
+  },
+  {
+    "file": "pallet-coverage-review.json",
+    "sha256": "9b34dad496da3831b9affefa248e32348118b1937e4a0e2d0c4a4513317d3d8f"
+  },
+  {
+    "file": "saved-annotations.json",
+    "sha256": "20ca567306cf3b4f44d4b6c1a18965d51dee2df44654dc4c58d798cc11d91259"
+  }
+]

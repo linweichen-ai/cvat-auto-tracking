@@ -1,0 +1,20 @@
+{
+  "base_url": "https://cvat.example.invalid",
+  "task_id": 101,
+  "job_id": 7,
+  "labels": {"pallet": 12},
+  "frame_count": 6,
+  "width": 640,
+  "height": 480,
+  "function_id": "pth-facebookresearch-sam2-vit-h",
+  "protected_frames": [2],
+  "work_dir": "./work",
+  "images_dir": "./frames",
+  "frame_pattern": "frame_{frame:06d}.jpg",
+  "sequence": {
+    "mode": "timestamps",
+    "filename_regex": "frame_(?P<index>\\d+)_(?P<timestamp_ns>\\d+)\\.png",
+    "max_gap_seconds": 3.0,
+    "source_index_step": 6
+  }
+}

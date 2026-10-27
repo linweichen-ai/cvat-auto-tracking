@@ -1,0 +1,47 @@
+{
+  "task_id": 430,
+  "job_id": 423,
+  "run_id": "continuous_run_01",
+  "elapsed_seconds": 1.642,
+  "remote_annotation_write_requests": 0,
+  "async_annotation_requests": 0,
+  "results": [
+    {
+      "frame": 106,
+      "previous_frame": 104,
+      "instance_key": "center_blue_empty",
+      "status": "LOCAL_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "source_image_sha256": "a70c69bb71c390f22a15567a057688f4f8400851419ea1985399d61592de1528",
+      "source_frame_name": "frame_000324_1792573458521502969.png",
+      "metrics": {
+        "warped_area_px": 16070,
+        "seed_area_px": 18291,
+        "reliable_fraction": 0.9585563161169882,
+        "median_motion_px": 9.849161148071289,
+        "sam2_vs_warp_iou": 0.9840541043618539,
+        "sam2_vs_warp_area_ratio": 0.9898568761667704
+      }
+    },
+    {
+      "frame": 108,
+      "previous_frame": 106,
+      "instance_key": "center_blue_empty",
+      "status": "LOCAL_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "source_image_sha256": "cfd8143c4e6870893dfff5d38777d4494ef7ff1c87259e6b7211411b9b69e7c7",
+      "source_frame_name": "frame_000330_1792573459874829584.png",
+      "metrics": {
+        "warped_area_px": 17766,
+        "seed_area_px": 15907,
+        "reliable_fraction": 0.9069571090847687,
+        "median_motion_px": 8.00228214263916,
+        "sam2_vs_warp_iou": 0.9803048848336486,
+        "sam2_vs_warp_area_ratio": 1.0034898120004503
+      }
+    }
+  ],
+  "annotation_canonical_identical": true,
+  "before_sha256": "e68ba1428c1facd3e9f80cfddfae21cecf7ec7dd0441e3675cfb5f29406e3b20",
+  "after_sha256": "e68ba1428c1facd3e9f80cfddfae21cecf7ec7dd0441e3675cfb5f29406e3b20",
+  "observed_changed_frames": [],
+  "change_interpretation": "External edits may occur; this tool sent no annotation writes."
+}

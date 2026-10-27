@@ -1,0 +1,33 @@
+{
+  "task_id": 430,
+  "job_id": 423,
+  "frames": 150,
+  "last_run": "plan_20261026T175625028024Z",
+  "last_readback_sha256": "f0cdcd2ca102da58977ffa0595e74985b9b5ff5bafdbc10a40843d3a5760f971",
+  "saved_masks": 1550,
+  "nonempty_frames": 150,
+  "source_counts": {
+    "auto": 1469,
+    "manual": 81
+  },
+  "label_counts": {
+    "206": 215,
+    "201": 1006,
+    "205": 150,
+    "203": 150,
+    "202": 16,
+    "204": 8,
+    "207": 5
+  },
+  "verified_operations": 1534,
+  "verified_actions": {
+    "create": 1454,
+    "update": 80
+  },
+  "batches": 79,
+  "all_classes_completed_frames": 150,
+  "pallet_full_image_complete": true,
+  "classification": "Independent identifiable pallets only; integral wooden shipping-crate bases excluded. Separate wooden pallets below plastic crates remain included.",
+  "material_holds": [],
+  "caution": "Practical source-reviewed coverage is not a measured pixel accuracy, precision or recall score."
+}

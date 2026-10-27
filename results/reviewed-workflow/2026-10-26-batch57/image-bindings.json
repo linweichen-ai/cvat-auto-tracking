@@ -1,0 +1,91 @@
+[
+  {
+    "frame": 0,
+    "source_sha256": "75bb16a8e0db2c492f120f5d1a0cf8d1dc6e35c5e836bcb8cd2d8d29ef644975",
+    "image": "frame-000-saved.jpg",
+    "image_sha256": "90ceb87df899cf5290ddb4c0c99b755e953f60e4648d97dc320fd0a258ee70be",
+    "saved_shapes": 16,
+    "display_shape_ids": [
+      2402744,
+      2402996,
+      2403288,
+      2402747,
+      2403238,
+      2402308,
+      2402873,
+      2402749,
+      2402748,
+      2402828,
+      2402746,
+      2401619,
+      2402872,
+      2402745,
+      2402266,
+      2402267
+    ],
+    "visual_review": "ROOT_VIEWED_ORIGINAL_AND_SAVED_OVERLAY_PASS",
+    "visual_reviewer": "root",
+    "review_recorded_at_utc": "2026-10-26T15:47:17.465566+00:00",
+    "visual_review_basis": "Root explicitly attested actual viewing of all four images (0,21,69,132) and their correct source/saved-mask correspondence. This is image-binding review, not all-class completion."
+  },
+  {
+    "frame": 21,
+    "source_sha256": "f4563d9f2924914ac8b3683e254822144b8d3677a49ba854c2537aa774cb97b9",
+    "image": "frame-021-saved.jpg",
+    "image_sha256": "e4546a35344622fa732ce28bff6146663613014980f8acceccb50c819c9b57dd",
+    "saved_shapes": 8,
+    "display_shape_ids": [
+      2403116,
+      2403038,
+      2402056,
+      2403259,
+      2403309,
+      2402055,
+      2403388,
+      2403115
+    ],
+    "visual_review": "ROOT_VIEWED_ORIGINAL_AND_SAVED_OVERLAY_PASS",
+    "visual_reviewer": "root",
+    "review_recorded_at_utc": "2026-10-26T15:47:17.465576+00:00",
+    "visual_review_basis": "Root explicitly attested actual viewing of all four images (0,21,69,132) and their correct source/saved-mask correspondence. This is image-binding review, not all-class completion."
+  },
+  {
+    "frame": 69,
+    "source_sha256": "71a8d644a4ef3ef790b6a40d2a07605f3957a3ea3a3de1e6cae2c5ea69fc8710",
+    "image": "frame-069-saved.jpg",
+    "image_sha256": "e211afcdead5ef0c76e8dec7815f0511754d0e220113ec173aab1d09e25b5fa5",
+    "saved_shapes": 3,
+    "display_shape_ids": [
+      2403357,
+      2401661,
+      2402995
+    ],
+    "visual_review": "ROOT_VIEWED_ORIGINAL_AND_SAVED_OVERLAY_PASS",
+    "visual_reviewer": "root",
+    "review_recorded_at_utc": "2026-10-26T15:47:17.465578+00:00",
+    "visual_review_basis": "Root explicitly attested actual viewing of all four images (0,21,69,132) and their correct source/saved-mask correspondence. This is image-binding review, not all-class completion."
+  },
+  {
+    "frame": 132,
+    "source_sha256": "23f2e74417268ab9e97e0eeb0cb2c097144a36c8540a6c3d9c81ea28d0fbf441",
+    "image": "frame-132-saved.jpg",
+    "image_sha256": "37535ee735cdc4f40304422614c3dbfe12388873f6440cc4de3f24cc4232497a",
+    "saved_shapes": 10,
+    "display_shape_ids": [
+      2402661,
+      2402043,
+      2402239,
+      2401698,
+      2402694,
+      2402041,
+      2402040,
+      2402039,
+      2402042,
+      2402662
+    ],
+    "visual_review": "ROOT_VIEWED_ORIGINAL_AND_SAVED_OVERLAY_PASS",
+    "visual_reviewer": "root",
+    "review_recorded_at_utc": "2026-10-26T15:47:17.465579+00:00",
+    "visual_review_basis": "Root explicitly attested actual viewing of all four images (0,21,69,132) and their correct source/saved-mask correspondence. This is image-binding review, not all-class completion."
+  }
+]

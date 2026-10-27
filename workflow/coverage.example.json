@@ -1,0 +1,29 @@
+{
+  "schema": "cvat_manual_coverage_review_v1",
+  "example_only": true,
+  "task_id": 1,
+  "job_id": 1,
+  "frames": [
+    {
+      "frame": 0,
+      "source_frame_name": "replace_with_verified_source_filename.png",
+      "source_image_sha256": "replace_with_64_hex_sha256",
+      "sequence_run": "run_01",
+      "label": "pallet",
+      "coverage_status": "INCOMPLETE",
+      "saved_shape_ids": [],
+      "author_reviewed_candidate_files": [],
+      "known_missing": [
+        {"region": "upper right rack", "physical_identity": "unresolved layers", "status": "HOLD_IDENTITY"}
+      ],
+      "unresolved_material": [
+        {"instance_key": "rear_blue", "region": "upper bright strip inside right fork opening", "status": "UNRESOLVED_MATERIAL_RETAINED", "evidence": "source crop and revision diff", "decision": "retain pixels; no background claim"}
+      ],
+      "reviews": {
+        "author": {"name": "replace", "viewed_full_frame": false, "evidence_file": "replace", "at": null},
+        "independent": {"name": "different reviewer", "viewed_full_frame": false, "evidence_file": "replace", "at": null}
+      },
+      "completion_rule": "COMPLETE requires both full-frame reviews, every visible instance handled, and zero unresolved items. NO_VISIBLE_TARGETS_REVIEWED also requires both full-frame reviews."
+    }
+  ]
+}

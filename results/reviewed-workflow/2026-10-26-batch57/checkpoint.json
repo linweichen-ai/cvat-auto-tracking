@@ -1,0 +1,30 @@
+{
+  "task_id": 430,
+  "job_id": 423,
+  "frames": 150,
+  "last_run": "plan_20261026T151314941838Z",
+  "last_readback_sha256": "4879a81e4614ad02a3d1d7f05e123c28449d482bde2aa482384e098cc1bb30ad",
+  "saved_masks": 1161,
+  "nonempty_frames": 150,
+  "source_counts": {
+    "auto": 1080,
+    "manual": 81
+  },
+  "label_counts": {
+    "201": 1006,
+    "203": 50,
+    "205": 100,
+    "202": 5
+  },
+  "verified_operations": 1143,
+  "verified_actions": {
+    "create": 1065,
+    "update": 78
+  },
+  "batches": 57,
+  "all_classes_completed_frames": 0,
+  "pallet_full_image_complete": true,
+  "classification": "Independent identifiable pallets only; integral wooden shipping-crate bases excluded. Separate wooden pallets below plastic crates remain included.",
+  "material_holds": [],
+  "caution": "Counts are not accuracy, recall or completion. This is a fixed intermediate checkpoint."
+}

@@ -1,148 +1,63 @@
-# CVAT 自助标注（自动跟踪）
+# CVAT 视频帧分割：候选生成、跟踪与独立复核
 
-在自建 CVAT 平台上加装 serverless 自动跟踪（auto-tracking）能力，实现"标一帧、自动跟完全段"，降低视频/多帧标注人力成本。
+本仓库保存 CVAT 辅助标注工具、真实任务的中间证据，以及可迁移到新任务的审核与增量写入流程。
 
-- 目标平台：CVAT v2.61.0（内网 `http://172.16.88.68:12080`）
-- 推理框架：Nuclio（CVAT serverless 函数）
-- 跟踪模型：调研中（SiamMask / TransT / SiamRPN++ / NanoTrack / ByteTrack 等，见 `status/model-research.md`）
+**最新结果：[Task3 150帧七类完成报告](docs/reports/2026-10-27-task3-final.md)**
 
----
+**工具包更新：[批量运行、实测演示与零人工路线](docs/automation-toolkit.md)**。新增多实例候选队列和无需登录的传播评测，38 项离线测试通过。
 
-## 1. 架构概览
+[早期204个mask固定快照](docs/reports/2026-10-26-task3-reviewed-workflow.md)继续保留。
 
-```
-┌──────────────┐   浏览器    ┌─────────────────────────────┐
-│  标注人员     │ ─────────▶ │  CVAT UI (172.16.88.68:12080)│
-└──────────────┘            │                              │
-                            │  CVAT server (Django)        │
-                            │      │                       │
-                            │      │ invoke function        │
-                            │      ▼                       │
-                            │  Nuclio / serverless          │
-                            │      │                       │
-                            │      ▼                       │
-                            │  tracker 推理容器 (ONNX/GPU)   │
-                            └─────────────────────────────┘
+![Task3 第0帧原图与最终保存状态](results/reviewed-workflow/2026-10-27-final/frame-000-saved.jpg)
 
-┌──────────────┐   git push   ┌──────────────┐   ssh/deploy   ┌──────────────┐
-│  本仓库       │ ──────────▶ │  GitHub       │ ────────────▶ │  目标服务器    │
-│  (本地开发)   │             │ cvat-auto-    │               │  172.16.88.68│
-└──────────────┘             │  tracking     │               │              │
-                             └──────────────┘               └──────────────┘
-```
+## 当前状态
 
-数据流：标注人员在 CVAT UI 选中首帧目标 → 点 Track → CVAT 通过 Nuclio 调用 tracker 函数 → tracker 逐帧输出 bbox/多边形 → 结果回写 CVAT 标注。
+Task3 对应 task 430 / job 423，共 150 帧。七类已按约定实用精度完成全图覆盖复核，最终保存 **1,550 个 mask**：pallet 1006、person 16、floor 150、slope 8、ego 150、other_robot 215、cargo_floor 5。79 批累计 **1,534 次回读验证操作**。覆盖记录绑定最终保存快照，保留少量有理由的身份排除与历史极小边界容差。公开发布已获授权，GitHub 仓库专用凭据已修复，报告、图像、快照和工具已推送至 `reviewed-task3-workflow-20261026` 分支。
 
----
+这些数量不表示准确率、召回率或完成率。旧版“492 个 shape / 116 帧”记录的是历史传播产出；发现错分、合并、漏标后，已撤回将其视为整段质量验收的结论。旧产物保留用于追溯。
 
-## 2. 真实任务效果（Task3 / 150 帧）
+## 从这里开始
 
-> 实测任务：Task3（task 430 / job 423，共 150 帧叉车第一视角仓库视频）。
+| 需要 | 入口 |
+|---|---|
+| 看原图、补标前后、失败案例与操作账本 | [最终150帧报告](docs/reports/2026-10-27-task3-final.md)、[第57批报告](docs/reports/2026-10-26-task3-batch57.md)、[第42批报告](docs/reports/2026-10-26-task3-batch42.md)、[第35批报告](docs/reports/2026-10-26-task3-batch35.md)、[最初报告](docs/reports/2026-10-26-task3-reviewed-workflow.md) |
+| 在新 task/job 上复用流程 | [workflow 工具与命令](workflow/README.md) |
+| 检查保存状态与每批实际写入 | [机器可读快照](results/reviewed-workflow/2026-10-27-final/checkpoint.json)、[操作账本](results/reviewed-workflow/2026-10-27-final/operation-ledger.json) |
+| 核对图像、源帧顺序及证据哈希 | [图像绑定](results/reviewed-workflow/2026-10-27-final/image-bindings.json)、[时序清单](results/reviewed-workflow/2026-10-26/sequence-manifest.json)、[产物 SHA256](results/reviewed-workflow/2026-10-27-final/asset-manifest.json) |
+| 使用已有浏览器辅助面板 | [历史面板使用说明](docs/overlay-usage.md) |
 
-![Task3 全量传播关键帧](results/full-propagation/full-grid.png)
+## 可复用工作流
 
-**结论一句话：人工只在 frame 0 标了 8 个 pallet 种子 mask，约 4.6 分钟自动跟踪完全部 150 帧，共产出 492 个 shape、覆盖 116 帧。** 目标托盘出画的帧自动留空，属正常行为。
-
-| 关键帧 | shape 数 | 说明 |
-|---|---|---|
-| frame 0 | 8 | 人工种子，覆盖全部托盘 |
-| frame 50 | 4 | 自动跟踪，mask 贴合塑料托盘 |
-| frame 100 | 13 | 场景中多个托盘均被覆盖 |
-| frame 149 | 5 | 最终帧托盘 mask 贴合 |
-
-**每个种子实例的生成量**：72 / 78 / 74 / 46 / 62 / 46 / 65 / 50（合计 492）。
-完整统计与验证：`results/full-propagation/verification-report.md`、`results/full-propagation/full-propagate-summary.json`。
-
-短范围演示（0-30 帧）对比图见 `results/demo/demo-grid.png`，面板实连截图见 `results/demo/panel-demo.png`。
-
-### 完整工作流：标首帧 → 缓存 → 范围自动跟踪 → 检查
-
-1. **安装面板（二选一）**
-   - Tampermonkey：导入 `userscript/cvat-auto-annotation.user.js`；或
-   - 浏览器扩展：Edge/Chrome 打开 `edge://extensions` → 开启开发者模式 → 「加载解压的扩展」选择 `extension/` 目录。
-2. **打开作业**：在浏览器正常登录 CVAT，打开标注作业页（URL 形如 `/tasks/430/jobs/423`）。
-   面板自动复用浏览器已登录会话（sessionid/csrftoken），**无需再次输入账号密码**——
-   顶部显示绿色「CVAT:用户名 / SAM3:已连接」即表示就绪。
-3. **标首帧**：在 CVAT 里把起始帧（如 frame 0）每个要跟踪的目标标好，按 `Ctrl+S` 保存。
-4. **缓存帧**：面板选好标签、填起止帧 → 点「① 缓存帧」，等进度条走到就绪。
-5. **范围自动跟踪**：点「② 范围自动跟踪」，确认弹窗后逐实例传播（状态栏实时显示 `实例 n/N`）。
-6. **检查**：点「③ 跳转结束帧检查」逐帧核对，错的手动改；后续未覆盖的帧人工补标。
-
-面板其余按钮：传播下一帧、撤销上一步、改标签、删范围（均带二次确认）、提示分割（点/框/文本）。
-详细手册见 `docs/overlay-usage.md`。
-
----
-
-## 3. 目录结构
-
-```
-cvat-auto-tracking/
-├── README.md                 # 本文件
-├── LICENSE                   # 开源许可证（MIT）
-├── .gitignore
-├── sync-to-github.ps1        # 一键 add/commit/push（带时间戳、幂等）
-├── status/                   # 项目状态与调研追踪
-│   ├── devops.md             #   DevOps / 仓库运维状态
-│   ├── TIMELINE.md           #   里程碑时间线
-│   └── model-research.md     #   跟踪模型选型调研
-├── docs/                     # 文档与报告
-│   ├── CHANGELOG.md          #   每次提交的内容与时间
-│   └── reports/              #   阶段性汇报
-├── serverless/               # Nuclio tracker 函数源码
-│   └── tracker/              #   各模型子目录（function.yaml + main.py）
-├── deploy/                   # 部署脚本
-│   ├── deploy.ps1            #   Windows 本地发起部署（SSH）
-│   └── deploy.sh             #   Linux 服务器端执行（nuctl deploy）
-├── tests/                    # 函数本地测试 / 单元测试
-└── results/                  # 产物：截图、测试结果、导出文件
+```mermaid
+flowchart LR
+  A[绑定任务并读取当前状态] --> B[按源时间分连续片段]
+  B --> C[人工复核种子]
+  C --> D[并行生成或跟踪候选]
+  D --> E[独立二次审核]
+  E --> F[单写入者逐实例 PATCH]
+  F --> G[回读核验与留存证据]
+  G --> H[固定阶段图文与下一批]
 ```
 
-## 4. 部署快速开始
+当前验证过的候选路线为本地双向光流辅助 + SAM2 提示分割精修。服务发现中有 SAM2 interactor，没有确认可用的原生 CVAT `kind: tracker`。不能把提示分割的速度或候选数量当作已部署的视频跟踪质量。
 
-> 前提：已拿到服务器 SSH 凭据，且服务器已装好 Docker / Nuclio（见 `docs/` 后续部署手册）。
+- 候选生成与远程写入分开；默认只生成计划。
+- 作者与复核者分别检查实例身份、边界、遮挡、全图漏标。
+- 所有候选绑定原图和元数据；逻辑帧号不能替代真实时间顺序。
+- 一个自动写入者；目标帧内容改变就跳过，避免覆盖手工编辑。
+- 每次只提交一个已批准 shape，再回读验证。未知写入结果先查明，不盲目重试。
+- 每次阶段记录固定一个快照，区分候选、审核、写入、单类覆盖和全部类别完成。
+- 三段作者并行生成，只有主控写入；细网格整体保留，优先正确类别、物理实例、明显遮挡和大边界。
 
-```powershell
-# 1. 克隆本仓库
-git clone https://github.com/<your-user>/cvat-auto-tracking.git
-cd cvat-auto-tracking
+## 目录
 
-# 2. 在本地准备好 tracker 函数（serverless/tracker/<model>/）
-
-# 3. 一键部署到服务器（PowerShell）
-.\deploy\deploy.ps1 -ServerHost 172.16.88.68 -SshUser <user> -FunctionDir .\serverless\tracker\<model>
-
-# 4. 在 CVAT UI 中：任务 → 选首帧 → 画框 → Actions → Track 选择该函数
+```text
+workflow/                         可配置复用工具、示例配置、离线测试
+results/reviewed-workflow/         新流程的图像、RLE、账本与固定快照
+docs/reports/                    图文报告与离线报告构建器
+extension/、userscript/            历史浏览器面板
+serverless/、deploy/               原有服务部署材料
+results/full-propagation/          历史传播产物，未作为验收真值
 ```
 
-## 5. 使用截图（占位）
-
-> 部署完成后替换以下占位：
-
-| 位置 | 截图文件 | 说明 |
-|---|---|---|
-| 函数在 CVAT `/ui/models` 列表可见 | `results/screenshots/01-function-listed.png` | Nuclio 部署成功后 CVAT 能拉到函数 |
-| 首帧标注后点 Track | `results/screenshots/02-track-trigger.png` | UI 触发自动跟踪 |
-| 后续帧自动标注结果 | `results/screenshots/03-auto-annotated.png` | tracker 输出回写 |
-
-## 6. 复现步骤
-
-1. 环境：Windows 本地 + Python 3.13；目标 Linux 服务器 172.16.88.68（端口 22 / 12080 已开放）。
-2. 服务器侧：安装 Docker、Nuclio（dashboard 端口需打通或做 SSH 端口转发）。
-3. 函数侧：参考 CVAT 官方 `serverless/README.md`，在 `serverless/tracker/<model>/` 下放 `function.yaml`（`kind: tracker`）与 `main.py`。
-4. 部署：`.\deploy\deploy.ps1 ...`（见上节）。
-5. 验证：在 CVAT 已有任务（CS_real 系列等）上选一段视频，首帧标一个目标 → Track → 检查后续帧是否自动跟踪。
-
-## 7. 日常更新（实时入库）
-
-任何新产物（模型配置、文档、测试结果、截图）落到本仓库后，执行：
-
-```powershell
-.\sync-to-github.ps1 -Message "说明本次改了什么"
-```
-
-脚本会自动：追加 `docs/CHANGELOG.md` → `git add -A` → 带时间戳 commit → push 到 origin。无变更时静默退出，可反复执行。
-
-## 8. 安全说明
-
-- GitHub PAT 仅用于 git/gh 认证，由 Git Credential Manager 保管，**不写入仓库任何文件**。
-- 服务器 SSH 凭据同样不入库；如需本地化配置，请放入被 `.gitignore` 忽略的 `.env` / `deploy.local.ps1`。
+复用配置不包含内部地址、个人路径或凭据。访问认证按 [workflow 文档](workflow/README.md) 从环境变量提供。旧面板、旧传播脚本的写入能力与新审核流程不同，使用前应明确目标任务和作用范围。

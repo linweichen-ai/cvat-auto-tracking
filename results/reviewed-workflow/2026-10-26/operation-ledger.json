@@ -1,0 +1,962 @@
+[
+  {
+    "batch": 1,
+    "run_id": "plan_20261026T072754823638Z",
+    "verified_operations": 2,
+    "frames": [
+      101,
+      111
+    ],
+    "actions": {
+      "create": 1,
+      "update": 1
+    },
+    "results": [
+      {
+        "frame": 101,
+        "action": "create",
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 111,
+        "action": "update",
+        "status": "READBACK_VERIFIED"
+      }
+    ],
+    "candidate_sha256": "caafdaf80bf935de42cae3da8df9d9aa8d7ea5424a95595591ba3fd3fe28c779",
+    "annotations_before_sha256": "d34d86bc8dd530ec79fd9ddfa1429deaaf61b5168f8f3b5742359c435c23889d",
+    "annotations_after_sha256": "ddc72d7330b1eee15b26af26b1bef2768030aaaf4322b7daaabb1e7931314234"
+  },
+  {
+    "batch": 2,
+    "run_id": "plan_20261026T073358363855Z",
+    "verified_operations": 4,
+    "frames": [
+      103,
+      105,
+      128,
+      129
+    ],
+    "actions": {
+      "create": 4
+    },
+    "results": [
+      {
+        "frame": 107,
+        "reason": "FRAME_CHANGED_OR_HUMAN_ADDED_SHAPE"
+      },
+      {
+        "frame": 109,
+        "reason": "FRAME_CHANGED_OR_HUMAN_ADDED_SHAPE"
+      },
+      {
+        "frame": 149,
+        "reason": "FRAME_CHANGED_OR_HUMAN_ADDED_SHAPE"
+      },
+      {
+        "frame": 103,
+        "action": "create",
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 105,
+        "action": "create",
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 128,
+        "action": "create",
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 129,
+        "action": "create",
+        "status": "READBACK_VERIFIED"
+      }
+    ],
+    "candidate_sha256": "deacf352b6b2e533776044e32e1b5540b73bd22d3e20bb2fbefade85e40c1958",
+    "annotations_before_sha256": "2e7061680b01d4d009a102963ebfbcb0ab86ad0950ba4fb0893d4fdbac1faa45",
+    "annotations_after_sha256": "732f6eefeaf3aa6c41dbd695baf83b8a8a1592a89561d3a7de2bd22e298a2b71"
+  },
+  {
+    "batch": 3,
+    "run_id": "plan_20261026T074211894374Z",
+    "verified_operations": 5,
+    "frames": [
+      51,
+      62,
+      107,
+      109,
+      149
+    ],
+    "actions": {
+      "update": 5
+    },
+    "results": [
+      {
+        "frame": 51,
+        "action": "update",
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 62,
+        "action": "update",
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 107,
+        "action": "update",
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 109,
+        "action": "update",
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 149,
+        "action": "update",
+        "status": "READBACK_VERIFIED"
+      }
+    ],
+    "candidate_sha256": "55b11b101ff63a25b604205d68eb475832f49818303197ded5757d537dee20a1",
+    "annotations_before_sha256": "732f6eefeaf3aa6c41dbd695baf83b8a8a1592a89561d3a7de2bd22e298a2b71",
+    "annotations_after_sha256": "6301c93d9d6b33053d689bb5c944fdb01afe09e36c3db693dd88b89382951f8d"
+  },
+  {
+    "batch": 4,
+    "run_id": "plan_20261026T074603871379Z",
+    "verified_operations": 9,
+    "frames": [
+      53,
+      55,
+      57,
+      59,
+      61,
+      63,
+      64,
+      65,
+      67
+    ],
+    "actions": {
+      "update": 9
+    },
+    "results": [
+      {
+        "frame": 53,
+        "action": "update",
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 55,
+        "action": "update",
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 57,
+        "action": "update",
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 59,
+        "action": "update",
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 61,
+        "action": "update",
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 63,
+        "action": "update",
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 65,
+        "action": "update",
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 67,
+        "action": "update",
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 64,
+        "action": "update",
+        "status": "READBACK_VERIFIED"
+      }
+    ],
+    "candidate_sha256": "28ae7eb52ae58a7d5b15b9cfffe3a7e28a96b07410689d8986e11978292a6871",
+    "annotations_before_sha256": "6301c93d9d6b33053d689bb5c944fdb01afe09e36c3db693dd88b89382951f8d",
+    "annotations_after_sha256": "a44a63f020290cca108544e4ac1f992170418c32241bc30ad650f1c1b34f6dbc"
+  },
+  {
+    "batch": 5,
+    "run_id": "plan_20261026T075837675535Z",
+    "verified_operations": 3,
+    "frames": [
+      100
+    ],
+    "actions": {
+      "create": 3
+    },
+    "results": [
+      {
+        "frame": 100,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 100,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 100,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      }
+    ],
+    "candidate_sha256": "4540b6bd8d8b87de900f0122d228fb2ccff3e99a8b045255db68c6506536d141",
+    "annotations_before_sha256": "a44a63f020290cca108544e4ac1f992170418c32241bc30ad650f1c1b34f6dbc",
+    "annotations_after_sha256": "a855416df13228d21c70f1c36d1fab2cb2feaaec887d0ee9469898c02d222ae2"
+  },
+  {
+    "batch": 6,
+    "run_id": "plan_20261026T075945765786Z",
+    "verified_operations": 1,
+    "frames": [
+      25
+    ],
+    "actions": {
+      "create": 1
+    },
+    "results": [
+      {
+        "frame": 25,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      }
+    ],
+    "candidate_sha256": "de2530f9f256755e650c3e075f7e768fde2d07332bd7eaee7e7b426fd5d2e2f9",
+    "annotations_before_sha256": "a855416df13228d21c70f1c36d1fab2cb2feaaec887d0ee9469898c02d222ae2",
+    "annotations_after_sha256": "a52008abb431ce4b4c0ec9fa4d73724b9f135f433ac36835ba2cc5818c6f8173"
+  },
+  {
+    "batch": 7,
+    "run_id": "plan_20261026T080445449754Z",
+    "verified_operations": 10,
+    "frames": [
+      102,
+      104,
+      106,
+      108
+    ],
+    "actions": {
+      "create": 10
+    },
+    "results": [
+      {
+        "frame": 102,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 102,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 102,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 102,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 104,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 104,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 104,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 104,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 106,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 108,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      }
+    ],
+    "candidate_sha256": "e75a126b4c0d4bb669a9f0880f3eaaa58d7912921a0c4549c23bd2a769d49abe",
+    "annotations_before_sha256": "a52008abb431ce4b4c0ec9fa4d73724b9f135f433ac36835ba2cc5818c6f8173",
+    "annotations_after_sha256": "aba67732574b63769dc385dcc98692a511fc0f4a59304b761ff86cee61f8b702"
+  },
+  {
+    "batch": 8,
+    "run_id": "plan_20261026T080613417695Z",
+    "verified_operations": 3,
+    "frames": [
+      75
+    ],
+    "actions": {
+      "create": 3
+    },
+    "results": [
+      {
+        "frame": 75,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 75,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 75,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      }
+    ],
+    "candidate_sha256": "2721be2faff0cd6f223713f249cebfc019476e02d6224e7599138d8fc75644c4",
+    "annotations_before_sha256": "aba67732574b63769dc385dcc98692a511fc0f4a59304b761ff86cee61f8b702",
+    "annotations_after_sha256": "689dea649108edfcec4451a8c143e37a33af647a36932185e3abeca5fb128b64"
+  },
+  {
+    "batch": 9,
+    "run_id": "plan_20261026T081038468217Z",
+    "verified_operations": 17,
+    "frames": [
+      100,
+      102,
+      104
+    ],
+    "actions": {
+      "create": 17
+    },
+    "results": [
+      {
+        "frame": 100,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 100,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 100,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 100,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 100,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 102,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 102,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 102,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 102,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 102,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 102,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 104,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 104,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 104,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 104,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 104,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 104,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      }
+    ],
+    "candidate_sha256": "fcd6790462c81b365dc995829143622cbfa8f618440c98faa52aad32dc86aa4b",
+    "annotations_before_sha256": "689dea649108edfcec4451a8c143e37a33af647a36932185e3abeca5fb128b64",
+    "annotations_after_sha256": "b6e40ce9e085a6c1aba7445c57e8c10a4e481c10e3d54398a01506ab74f98b7b"
+  },
+  {
+    "batch": 10,
+    "run_id": "plan_20261026T081201987701Z",
+    "verified_operations": 9,
+    "frames": [
+      110,
+      112,
+      114,
+      116,
+      118,
+      120,
+      122,
+      124,
+      125
+    ],
+    "actions": {
+      "create": 9
+    },
+    "results": [
+      {
+        "frame": 110,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 112,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 114,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 116,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 118,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 120,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 122,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 124,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 125,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      }
+    ],
+    "candidate_sha256": "0c9306bddea409dec830495771891f23756df524a92093467c9a7770e3063c04",
+    "annotations_before_sha256": "b6e40ce9e085a6c1aba7445c57e8c10a4e481c10e3d54398a01506ab74f98b7b",
+    "annotations_after_sha256": "c3bcd69cdcb4e986d6f4f7e995b76a834d424beb7146945f816b442bb9d5c7b8"
+  },
+  {
+    "batch": 11,
+    "run_id": "plan_20261026T083757679686Z",
+    "verified_operations": 12,
+    "frames": [
+      106,
+      108
+    ],
+    "actions": {
+      "create": 12
+    },
+    "results": [
+      {
+        "frame": 106,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 106,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 106,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 106,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 106,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 106,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 108,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 108,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 108,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 108,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 108,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 108,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      }
+    ],
+    "candidate_sha256": "36e3044f9624c6c00ef25ad2e5152eb87a2e31bb3392ed4c4ec534fd45f6cc7a",
+    "annotations_before_sha256": "c3bcd69cdcb4e986d6f4f7e995b76a834d424beb7146945f816b442bb9d5c7b8",
+    "annotations_after_sha256": "6dc04168891cac85f2e9d368bb2f2da522174c9aa4e51778fdc7aec2b76bf80b"
+  },
+  {
+    "batch": 12,
+    "run_id": "plan_20261026T084750762710Z",
+    "verified_operations": 48,
+    "frames": [
+      110,
+      112,
+      114,
+      116,
+      118,
+      120,
+      122,
+      124
+    ],
+    "actions": {
+      "create": 48
+    },
+    "results": [
+      {
+        "frame": 110,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 110,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 110,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 110,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 110,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 110,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 112,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 112,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 112,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 112,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 112,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 112,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 114,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 114,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 114,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 114,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 114,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 114,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 116,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 116,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 116,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 116,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 116,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 116,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 118,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 118,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 118,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 118,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 118,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 118,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 120,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 120,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 120,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 120,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 120,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 120,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 122,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 122,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 122,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 122,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 122,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 122,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 124,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 124,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 124,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 124,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 124,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      },
+      {
+        "frame": 124,
+        "action": "create",
+        "shape_id": null,
+        "status": "READBACK_VERIFIED"
+      }
+    ],
+    "candidate_sha256": "7dd692686fd366f5e315567ec4f6c25a7066398b23bcfdf7caf8422d8977da0b",
+    "annotations_before_sha256": "6dc04168891cac85f2e9d368bb2f2da522174c9aa4e51778fdc7aec2b76bf80b",
+    "annotations_after_sha256": "31b9f40ef1655cd541f7810c344777ae5537be7e2ce3ea9e1c1ea7d93db2fbf7"
+  }
+]

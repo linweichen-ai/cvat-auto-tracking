@@ -1,0 +1,63 @@
+[
+  {
+    "frame": 41,
+    "source_sha256": "876d254cf96262b0ab41233ca175fce520b39672d4b3f01bed6c2f72ded71fbf",
+    "image": "frame-041-saved.jpg",
+    "image_sha256": "28d61aaa85b54a2dd97a029d4f9804d4e44e68129253f5064608379e8173b471",
+    "saved_shapes": 4,
+    "display_shape_ids": [
+      2402636,
+      2401639,
+      2402604,
+      2402637
+    ],
+    "visual_review": "ROOT_VIEWED_ORIGINAL_AND_SAVED_OVERLAY",
+    "full_frame_complete": false
+  },
+  {
+    "frame": 54,
+    "source_sha256": "bc10444c716beaa7edc4ac6e04071c99e8a44d6da96270af3338defa9d11e854",
+    "image": "frame-054-saved.jpg",
+    "image_sha256": "2b2bb8f6e65ca08ce197ea95307b04f2123fecd26ee47e616fb91775318d1be7",
+    "saved_shapes": 2,
+    "display_shape_ids": [
+      2402669,
+      2402678
+    ],
+    "visual_review": "ROOT_VIEWED_ORIGINAL_AND_SAVED_OVERLAY",
+    "full_frame_complete": false
+  },
+  {
+    "frame": 65,
+    "source_sha256": "2780eeb3eed3663be0e447f3e8128b7503c9dfaf39f35be93daf6e22bcaff3da",
+    "image": "frame-065-saved.jpg",
+    "image_sha256": "f34e88541e6af78bd2b9ceff67719407a7c3214fa75b343a934f50f27edd24a8",
+    "saved_shapes": 2,
+    "display_shape_ids": [
+      2401659,
+      2402622
+    ],
+    "visual_review": "ROOT_VIEWED_ORIGINAL_AND_SAVED_OVERLAY",
+    "full_frame_complete": false
+  },
+  {
+    "frame": 131,
+    "source_sha256": "293cb223ed6908d4357db71ae7aa8b1a918fd45dc75ee25b9911455e80c2796a",
+    "image": "frame-131-saved.jpg",
+    "image_sha256": "eb803f3a11600a0d47d2ce9ed72c8ee1f3ea1e42ccbebbabd66e5c0e5f4cee28",
+    "saved_shapes": 9,
+    "display_shape_ids": [
+      2402659,
+      2402227,
+      2402038,
+      2402035,
+      2402034,
+      2401697,
+      2402036,
+      2402037,
+      2402660
+    ],
+    "visual_review": "ROOT_VIEWED_ORIGINAL_AND_SAVED_OVERLAY",
+    "full_frame_complete": false
+  }
+]

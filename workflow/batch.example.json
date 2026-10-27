@@ -1,0 +1,20 @@
+{
+  "instances": [
+    {
+      "label": "pallet",
+      "seed_frame": 0,
+      "seed_mask": "work/seeds/pallet-1.png",
+      "seed_review": "work/seeds/pallet-1-review.json",
+      "steps": 8,
+      "instance_key": "pallet_1"
+    },
+    {
+      "label": "pallet",
+      "seed_frame": 0,
+      "seed_mask": "work/seeds/pallet-2.png",
+      "seed_review": "work/seeds/pallet-2-review.json",
+      "steps": 8,
+      "instance_key": "pallet_2"
+    }
+  ]
+}
