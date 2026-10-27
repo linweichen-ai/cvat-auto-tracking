@@ -4,6 +4,8 @@
 
 **最新结果：[Task3 150帧七类完成报告](docs/reports/2026-10-27-task3-final.md)**
 
+**工具包更新：[批量运行、实测演示与零人工路线](docs/automation-toolkit.md)**。新增多实例候选队列和无需登录的传播评测，38 项离线测试通过。
+
 [早期204个mask固定快照](docs/reports/2026-10-26-task3-reviewed-workflow.md)继续保留。
 
 ![Task3 第0帧原图与最终保存状态](results/reviewed-workflow/2026-10-27-final/frame-000-saved.jpg)

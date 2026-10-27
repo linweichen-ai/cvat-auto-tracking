@@ -1,0 +1,73 @@
+{
+  "kind": "Historical 2026-10-26 DIS+SAM2 actual inference replay, not a new online run",
+  "seed_frame": 104,
+  "target_frames": 8,
+  "historical_elapsed_seconds": 10.513,
+  "reference_note": "Post-review snapshot may include outputs derived from these candidates; agreement is not an independent accuracy estimate.",
+  "gallery": [
+    {
+      "frame": 106,
+      "seed_frame": 104,
+      "step": 1,
+      "image": "sam2-replay-106.jpg",
+      "reference_id": 2401987,
+      "agreement_iou": 1.0
+    },
+    {
+      "frame": 108,
+      "seed_frame": 104,
+      "step": 2,
+      "image": "sam2-replay-108.jpg",
+      "reference_id": 2401988,
+      "agreement_iou": 1.0
+    },
+    {
+      "frame": 110,
+      "seed_frame": 104,
+      "step": 3,
+      "image": "sam2-replay-110.jpg",
+      "reference_id": 2401989,
+      "agreement_iou": 1.0
+    },
+    {
+      "frame": 112,
+      "seed_frame": 104,
+      "step": 4,
+      "image": "sam2-replay-112.jpg",
+      "reference_id": 2401990,
+      "agreement_iou": 1.0
+    },
+    {
+      "frame": 114,
+      "seed_frame": 104,
+      "step": 5,
+      "image": "sam2-replay-114.jpg",
+      "reference_id": 2401991,
+      "agreement_iou": 1.0
+    },
+    {
+      "frame": 116,
+      "seed_frame": 104,
+      "step": 6,
+      "image": "sam2-replay-116.jpg",
+      "reference_id": 2401992,
+      "agreement_iou": 1.0
+    },
+    {
+      "frame": 118,
+      "seed_frame": 104,
+      "step": 7,
+      "image": "sam2-replay-118.jpg",
+      "reference_id": 2401993,
+      "agreement_iou": 1.0
+    },
+    {
+      "frame": 120,
+      "seed_frame": 104,
+      "step": 8,
+      "image": "sam2-replay-120.jpg",
+      "reference_id": 2401994,
+      "agreement_iou": 1.0
+    }
+  ]
+}

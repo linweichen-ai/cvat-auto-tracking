@@ -52,7 +52,8 @@ def make_prompt(frame,key,warped,reliable):
     return {'frame':frame,'instance_key':key,'pos_points':positive,'neg_points':negative}
 
 
-def run(seed_frame,seed_mask,seed_review,steps,key,baseline,output):
+def preflight(seed_frame,seed_mask,seed_review,steps,key,baseline):
+    """Validate a seed and its complete frame plan without any remote calls."""
     scope=guard.SCOPE;seed_mask=Path(seed_mask)
     review=guard.read_json(seed_review)
     guard.require(review.get('status')=='approved' and review.get('author') and review.get('reviewer') and review['author']!=review['reviewer'],'REVIEWED_SEED_REQUIRED')
@@ -66,6 +67,15 @@ def run(seed_frame,seed_mask,seed_review,steps,key,baseline,output):
     guard.require(mask.shape==(scope.height,scope.width) and mask.any(),'INVALID_SEED_MASK')
     from .inference import validate_prompts
     validate_prompts([{'frame':targets[0],'instance_key':key,'pos_points':[[0,0]],'neg_points':[]}])
+    return {'review':review,'manifest':manifest,'run_id':run_id,'targets':targets,
+            'sources':sources,'mask':mask,'meta':meta}
+
+
+def run(seed_frame,seed_mask,seed_review,steps,key,baseline,output):
+    scope=guard.SCOPE
+    prepared=preflight(seed_frame,seed_mask,seed_review,steps,key,baseline)
+    review=prepared['review'];manifest=prepared['manifest'];run_id=prepared['run_id']
+    targets=prepared['targets'];sources=prepared['sources'];mask=prepared['mask'];meta=prepared['meta']
     output=scope.output(output);output.mkdir(parents=True,exist_ok=False)
     write_json(output/'sequence_manifest.json',manifest)
     write_json(output/'seed_review.json',review)
